@@ -14,20 +14,34 @@ body {
 
 .child-wrapper {
   position: relative;
+  height: 100vh;
 }
 
 .blob-container-1 {
   position: absolute;
   left: -20%;
-  top: -100px;
+  top: 186px;
   z-index: -1;
+  transition: all 3s;
+  opacity: 0;
+  scale: 0;
+}
+.blob-container-1.active {
+  opacity: 100;
+  scale: 1;
 }
 
 .blob-container-2 {
   position: absolute;
   right: -20%;
-  top: -100px;
+  top: 186px;
   z-index: -1;
+  transition: all 3s;
+  scale: 0;
+}
+.blob-container-2.active {
+  opacity: 100;
+  scale: 1;
 }
 
 .bb {
@@ -155,7 +169,7 @@ body {
 }
 
 .exit-welcome {
-  animation: slide-left-w 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-left-w 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 @keyframes slide-left-w {
   0% {

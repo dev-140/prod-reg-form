@@ -1,9 +1,21 @@
 $(document).ready(function () {
+    setTimeout(function () {
+        $(".welcome-text-b").text("Wait lang hehehe...");
+    }, 2000);
+    setTimeout(function () {
+        $(".welcome-text-b").text("Tagal potek!");
+    }, 5000);
+    setTimeout(function () {
+        $(".welcome-text-b").text("Yan okay na guys!");
+    }, 7000);
+
 	$(".continue-one-btn").on("click", () => {
 		$(".hero-container").removeClass("slide-right").addClass("exit");
 		setTimeout(function () {
 			$(".hero-container").addClass("d-none");
 			$(".first-container").addClass("slide-right").removeClass("d-none").removeClass("exit");
+            $('.blob-container-1').addClass("active");
+            $('.blob-container-2').addClass("active");
 		}, 500);
 	});
 
@@ -75,11 +87,19 @@ $(document).ready(function () {
 
     // input text checker
     $('.text-only').attr('onkeydown', 'return /[a-z]/i.test(event.key)');
+    $('.number-only').on('keydown input', function (event) {
+        // Allow numeric input (0-9) and special keys (Delete, Backspace)
+        if (!((event.key === 'Delete' || event.key === 'Backspace') || /^[0-9]{0,10}$/.test(this.value))) {
+            event.preventDefault();
+        }
+    });
+    
 
     // $('.required-input').
     $.fn.checkInputs = () => {
         var inputs = $(".required-input");
         var isInputs = false;
+        var isInputD = false;
 
         for(var i = 0; i < inputs.length; i++){
             if(($(inputs[i]).val()) == "") {
@@ -117,20 +137,20 @@ $(document).ready(function () {
             
             if (age >= 16) {
                 $("#bday").removeClass("invalid-input");
-                isInputs = true;
+                isInputD = true;
             } else {
                 $("#bday").addClass("invalid-input");
-                isInputs = false;
+                isInputD = false;
             }
         }
 
-        if (isInputs == true) {
+        if (isInputs == true && isInputD == true) {
             console.log('ready');
             $(".third-container").removeClass("slide-right").addClass("exit");
             setTimeout(function () {
                 $(".third-container").addClass("d-none");
+                $(".fourth-container").removeClass("exit").removeClass("d-none").addClass("slide-right");
             }, 500);
-
         }
     }
 
@@ -138,8 +158,61 @@ $(document).ready(function () {
         $.fn.checkInputs();
     });
 
-    // $(".hero-container").addClass("d-none");
-    // $(".second-container").addClass("d-none");
-    // $(".first-container").addClass("d-none");
-    // $(".third-container").removeClass("d-none");
+    $('.back-to-step-one').on('click', () => {
+        $(".fourth-container").addClass("exit").removeClass("slide-right");
+        setTimeout(function () {
+            $(".fourth-container").addClass("d-none");
+            $(".third-container").removeClass("exit").removeClass("d-none").addClass("slide-right");
+        }, 500);
+    });
+
+    $('.check-step-two').on("click", () => {
+        var inputs = $(".required-input-2");
+        var contact = $(".required-input-contact");
+        var isInputs = false;
+        var isContact = false;
+
+        for(var i = 0; i < inputs.length; i++){
+            if(($(inputs[i]).val()) == "") {
+                i = inputs.length;
+                isInputs = false;
+
+                if(isInputs == false) {
+                    for(var i = 0; i < inputs.length; i++){
+                        if(($(inputs[i]).val()) == "") {
+                            $(inputs[i]).addClass("invalid-input");
+                        } if (($(inputs[i]).val()) !== "") {
+                            $(inputs[i]).removeClass("invalid-input");
+                        }
+                    }
+                }
+            } else {
+                $(inputs[i]).removeClass("invalid-input");
+                isInputs = true;
+            }
+        }
+
+        for(var i = 0; i < contact.length; i++){
+            if(($(contact[i]).val()) == "") {
+                i = contact.length;
+                isContact = false;
+
+                if(isContact == false) {
+                    for(var i = 0; i < isContact.length; i++){
+                        if(($(isContact[i]).val()) == "") {
+                            $(isContact[i]).addClass("invalid-input");
+                        } if (($(isContact[i]).val()) !== "") {
+                            $(isContact[i]).removeClass("invalid-input");
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    $(".hero-container").addClass("d-none");
+    $(".second-container").addClass("d-none");
+    $(".first-container").addClass("d-none");
+    $(".third-container").addClass("d-none");
+    $(".fourth-container").removeClass("exit").addClass("slide-right");
 });

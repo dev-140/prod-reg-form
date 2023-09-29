@@ -22,7 +22,7 @@
 	<body>
 		<!-- main container -->
 		<div class="main-container d-flex align-items-center justify-content-center p-2 p-md-5">
-            <div class="child-wrapper col-12 col-md-8 col-xl-6">
+            <div class="child-wrapper col-12 col-md-8 col-xl-6 d-flex align-items-center">
                 <div class="blob-container-1">
                     <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
                         <defs>
@@ -88,7 +88,7 @@
                     <div class="row">
                         <div class="form-group">
                             <input
-                                type="text"
+                                type="email"
                                 class="form-control"
                                 id="codeEmail"
                                 aria-describedby="emailHelp"
@@ -177,6 +177,7 @@
                                         class="form-control required-input"
                                         id="Address"
                                         placeholder="Address"
+                                        onkeydown="return /[a-zA-Z0-9]/i.test(event.key)"
                                         />
                                 </div>
                                 <div class="col-12 col-md-6 p-2">
@@ -193,6 +194,60 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- other info -->
+                <div class="fourth-container main-con animate-container col-12 con-b exit">
+                    <h2 class="heading bb">
+                        4. <span class="outline-text">Other Information</span>
+                    </h2>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="d-flex flex-column flex-md-row align-items-between">
+                                <div class="col-12 col-md-6 p-2">
+                                    <input
+                                    type="text"
+                                    class="form-control text-only required-input-2"
+                                    id="gFn"
+                                    placeholder="Guardian First Name"
+                                    />
+                                </div>
+                                <div class="col-12 col-md-6 p-2">
+                                    <input
+                                    type="text"
+                                    class="form-control text-only required-input-2"
+                                    id="gLn"
+                                    placeholder="Guardian Last Name"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column flex-md-row align-items-between">
+                                <div class="col-12 col-md-6 p-2">
+                                        <input
+                                        type="text"
+                                        class="form-control required-input-contact number-only"
+                                        id="sContactNumber"
+                                        placeholder="Student Contact Number"
+                                        />
+                                </div>
+                                <div class="col-12 col-md-6 p-2">
+                                    <input
+                                    type="text"
+                                    class="form-control required-input-contact number-only"
+                                    id="sContactNumber"
+                                    placeholder="Guardian Contact Number"
+                                    />
+                            </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="buttons btn btn-dark mt-3 check-step-two">
+                            Continue
+                        </button>
+                        <button type="submit" class="buttons back-to-step-one btn btn-dark mt-3">
+                            Back
+                        </button>
+                    </div>
+                </div>
             </div>
 			
 		</div>
@@ -205,9 +260,9 @@
             <h2 class="heading">Incorrect Code</h2>
         </div>
 
-        <div class="welcome-text exit-welcome d-flex align-items-center justify-content-center">
-            <h2 class="text-center heading">Loading...</h2>
-        </div>
+        <!-- <div class="welcome-text exit-welcome d-flex align-items-center justify-content-center">
+            <h2 class="text-center heading welcome-text-b">Loading...</h2>
+        </div> -->
 
 		<!-- scripts -->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
