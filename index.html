@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>T.I.P Form</title>
+		<link rel="icon" type="image/x-icon" href="/images/logo.png" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="/css/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<!-- main container -->
+		<div
+			class="main-container d-flex align-items-center justify-content-center p-2 p-md-5">
+			<div class="container hero-container d-flex align-items-center justify-content-center flex-column">
+				<h2 class="hero-heading slide-right">
+					Unlock Your Future: Register for TIP College Student
+					Enrollment Today!
+				</h2>
+				<button type="button" class="buttons btn btn-dark slide-right continue-btn mt-3 continue-one-btn" >
+					Continue
+				</button>
+			</div>
+
+            <!-- email section -->
+			<div class="first-container main-con col-12 col-md-8 col-xl-6 con-b d-none">
+				<h2 class="heading bb">
+					1. <span class="outline-text">Enter a valid email</span>
+				</h2>
+
+				<div class="row">
+					<div class="form-group">
+						<input
+							type="text"
+							class="form-control"
+							id="codeEmail"
+							aria-describedby="emailHelp"
+							placeholder="Enter email"
+						/>
+					</div>
+					<button type="submit" class="buttons check-email btn btn-dark continue-btn mt-3 continue-one-btn">
+						Continue
+					</button>
+				</div>
+			</div>
+
+            <div class="second-container main-con col-12 col-md-8 col-xl-6 con-b d-none">
+				<h2 class="heading bb">
+					2. <span class="outline-text">We sent you a code in your email!</span>
+				</h2>
+
+				<div class="row">
+					<div class="form-group">
+						<input
+							type="number"
+							class="form-control"
+							id="codeVal"
+							aria-describedby="emailHelp"
+							placeholder="Enter code"
+						/>
+					</div>
+                    
+					<button type="submit" class="buttons check-code btn btn-dark continue-btn mt-3">
+						Continue
+					</button>
+                    <button type="submit" class="buttons btn btn-dark back-to-email mt-3">
+						Back
+					</button>
+				</div>
+			</div>
+
+            <!-- info section -->
+            <div class="third-container main-con col-12 col-md-8 col-xl-6 con-b d-none">
+				<h2 class="heading bb">
+					3. <span class="outline-text">Personal Information</span>
+				</h2>
+				<div class="row">
+					<div class="form-group">
+						<div class="d-flex flex-column flex-md-row align-items-between">
+                            <div class="col-12 col-md-6 p-2">
+                                    <input
+                                    type="text"
+                                    class="form-control text-only required-input"
+                                    id="firstName"
+                                    placeholder="First Name"
+                                    />
+                            </div>
+                            <div class="col-12 col-md-6 p-2">
+                                <input
+                                type="text"
+                                class="form-control text-only"
+                                id="lastName"
+                                placeholder="Last Name"
+                                />
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column flex-md-row align-items-between">
+                            <div class="col-12 col-md-6 p-2">
+                                    <input
+                                    type="text"
+                                    class="form-control text-only"
+                                    id="middleName"
+                                    placeholder="Middle Name"
+                                    />
+                            </div>
+                            <div class="col-12 col-md-6 p-2">
+                                <input
+                                type="date"
+                                class="form-control"
+                                id="bday"
+                                placeholder="Birthday"
+                                />
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column flex-md-row align-items-between">
+                            <div class="col-12 col-md-6 p-2">
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    id="Address"
+                                    placeholder="Address"
+                                    />
+                            </div>
+                            <div class="col-12 col-md-6 p-2">
+                                <select class="form-select gender-select" aria-label="gender select">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+					</div>
+					<button type="submit" class="buttons btn btn-dark check-step-one mt-3">
+						Continue
+					</button>
+				</div>
+			</div>
+		</div>
+
+        <div class="modal-up modal-form d-flex align-items-center justify-content-center d-none">
+            <h2 class="heading">Please complete the form with correct details</h2>
+        </div>
+
+        <div class="modal-up modal-code d-flex align-items-center justify-content-center d-none">
+            <h2 class="heading">Incorrect Code</h2>
+        </div>
+
+		<!-- scripts -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+			crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<script src="/app.js"></script>
+	</body>
+</html>
