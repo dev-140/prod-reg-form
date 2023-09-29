@@ -4,10 +4,9 @@ $(document).ready(function () {
 		setTimeout(function () {
 			$(".hero-container").addClass("d-none");
 			$(".first-container").addClass("slide-right").removeClass("d-none").removeClass("exit");
-		}, 1000);
+		}, 500);
 	});
 
-    var emailCodeval;
     emailjs.init("UYS2azYm6sggcXD6l");
 
     $.fn.emailCode = () => {
@@ -45,7 +44,7 @@ $(document).ready(function () {
                 $(".first-container").addClass("d-none");
                 $(".second-container").addClass("slide-right").removeClass("d-none").removeClass("exit");
                 // $.fn.emailCode();
-            }, 1000);
+            }, 500);
         }
 	});
 
@@ -71,24 +70,76 @@ $(document).ready(function () {
         setTimeout(function () {
             $(".second-container").addClass("d-none");
             $(".first-container").addClass("slide-right").removeClass("exit").removeClass("d-none");
-        }, 1000);
+        }, 500);
     });
 
     // input text checker
-
     $('.text-only').attr('onkeydown', 'return /[a-z]/i.test(event.key)');
 
     // $('.required-input').
     $.fn.checkInputs = () => {
-        console.log(1)
+        var inputs = $(".required-input");
+        var isInputs = false;
+
+        for(var i = 0; i < inputs.length; i++){
+            if(($(inputs[i]).val()) == "") {
+                i = inputs.length;
+                isInputs = false;
+
+                if(isInputs == false) {
+                    for(var i = 0; i < inputs.length; i++){
+                        if(($(inputs[i]).val()) == "") {
+                            $(inputs[i]).addClass("invalid-input");
+                        } if (($(inputs[i]).val()) !== "") {
+                            $(inputs[i]).removeClass("invalid-input");
+                        }
+                    }
+                }
+            } else {
+                $(inputs[i]).removeClass("invalid-input");
+                isInputs = true;
+            }
+        }
+
+        var inputDate = $("#bday").val();
+        if (inputDate) {
+            var birthDate = new Date(inputDate);
+            var currentDate = new Date();
+            var age = currentDate.getFullYear() - birthDate.getFullYear();
+
+            if (
+                currentDate.getMonth() < birthDate.getMonth() ||
+                (currentDate.getMonth() === birthDate.getMonth() && 
+                currentDate.getDate() < birthDate.getDate())
+            ) {
+                age--;
+            }
+            
+            if (age >= 16) {
+                $("#bday").removeClass("invalid-input");
+                isInputs = true;
+            } else {
+                $("#bday").addClass("invalid-input");
+                isInputs = false;
+            }
+        }
+
+        if (isInputs == true) {
+            console.log('ready');
+            $(".third-container").removeClass("slide-right").addClass("exit");
+            setTimeout(function () {
+                $(".third-container").addClass("d-none");
+            }, 500);
+
+        }
     }
 
     $('.check-step-one').on('click', () => {
         $.fn.checkInputs();
     });
-});
 
-$(".hero-container").addClass("d-none");
-$(".second-container").addClass("d-none");
-$(".first-container").addClass("d-none");
-$(".third-container").removeClass("d-none");
+    // $(".hero-container").addClass("d-none");
+    // $(".second-container").addClass("d-none");
+    // $(".first-container").addClass("d-none");
+    // $(".third-container").removeClass("d-none");
+});
