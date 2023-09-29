@@ -86,7 +86,7 @@ $(document).ready(function () {
     });
 
     // input text checker
-    $('.text-only').attr('onkeydown', 'return /[a-z]/i.test(event.key)');
+    $('.text-only').attr('onkeydown', 'return /[a-z ]/i.test(event.key)');
     $('.number-only').on('keydown input', function (event) {
         // Allow numeric input (0-9) and special keys (Delete, Backspace)
         if (!((event.key === 'Delete' || event.key === 'Backspace') || /^[0-9]{0,10}$/.test(this.value))) {
@@ -102,17 +102,16 @@ $(document).ready(function () {
         var isInputD = false;
 
         for(var i = 0; i < inputs.length; i++){
-            if(($(inputs[i]).val()) == "") {
+            console.log(1)
+            if($(inputs[i]).val() == "" || $(inputs[i]).val().length <= 1) {
                 i = inputs.length;
                 isInputs = false;
 
-                if(isInputs == false) {
-                    for(var i = 0; i < inputs.length; i++){
-                        if(($(inputs[i]).val()) == "") {
-                            $(inputs[i]).addClass("invalid-input");
-                        } if (($(inputs[i]).val()) !== "") {
-                            $(inputs[i]).removeClass("invalid-input");
-                        }
+                for(var j = 0; j < inputs.length; j++){
+                    if($(inputs[j]).val() == "" || $(inputs[j]).val().length <= 1) {
+                        $(inputs[j]).addClass("invalid-input");
+                    } else if ($(inputs[j]).val() !== "" || $(inputs[j]).val().length >= 2) {
+                        $(inputs[j]).removeClass("invalid-input");
                     }
                 }
             } else {
@@ -145,7 +144,6 @@ $(document).ready(function () {
         }
 
         if (isInputs == true && isInputD == true) {
-            console.log('ready');
             $(".third-container").removeClass("slide-right").addClass("exit");
             setTimeout(function () {
                 $(".third-container").addClass("d-none");
@@ -168,22 +166,22 @@ $(document).ready(function () {
 
     $('.check-step-two').on("click", () => {
         var inputs = $(".required-input-2");
-        var contact = $(".required-input-contact");
         var isInputs = false;
-        var isContact = false;
 
-        for(var i = 0; i < inputs.length; i++){
-            if(($(inputs[i]).val()) == "") {
+        for (var i = 0; i < inputs.length; i++) {
+            var inputValue = $(inputs[i]).val();
+
+            if (inputValue === "" || inputValue.length <= 1) {
+                $(inputs[i]).addClass("invalid-input");
                 i = inputs.length;
                 isInputs = false;
 
-                if(isInputs == false) {
-                    for(var i = 0; i < inputs.length; i++){
-                        if(($(inputs[i]).val()) == "") {
-                            $(inputs[i]).addClass("invalid-input");
-                        } if (($(inputs[i]).val()) !== "") {
-                            $(inputs[i]).removeClass("invalid-input");
-                        }
+                for (var j = 0; j < inputs.length; j++) {
+                    if ($(inputs[j]).val() === "" || $(inputs[j]).val().length <= 1) {
+                        $(inputs[j]).addClass("invalid-input");
+                        isInputs = false;
+                    } else if ($(inputs[j]).val() !== "" || $(inputs[j]).val() >= 2) {
+                        $(inputs[j]).removeClass("invalid-input");
                     }
                 }
             } else {
@@ -192,27 +190,35 @@ $(document).ready(function () {
             }
         }
 
-        for(var i = 0; i < contact.length; i++){
-            if(($(contact[i]).val()) == "") {
-                i = contact.length;
-                isContact = false;
+        var isContactS = false;
+        var isContactG = false;
 
-                if(isContact == false) {
-                    for(var i = 0; i < isContact.length; i++){
-                        if(($(isContact[i]).val()) == "") {
-                            $(isContact[i]).addClass("invalid-input");
-                        } if (($(isContact[i]).val()) !== "") {
-                            $(isContact[i]).removeClass("invalid-input");
-                        }
-                    }
-                }
-            }
+        if ($("#sContactNumber").val().length === 0 || !/^[0-9]+$/.test($("#sContactNumber").val()) || $("#sContactNumber").val().includes(" ") || $("#sContactNumber").val().length !== 11) {
+            $("#sContactNumber").addClass("invalid-input");
+            isContactS = false;
+        } else {
+            $("#sContactNumber").removeClass("invalid-input");
+            isContactS = true;
         }
-    });
 
-    $(".hero-container").addClass("d-none");
-    $(".second-container").addClass("d-none");
-    $(".first-container").addClass("d-none");
-    $(".third-container").addClass("d-none");
-    $(".fourth-container").removeClass("exit").addClass("slide-right");
+        if ($("#gContactNumber").val().length === 0 || !/^[0-9]+$/.test($("#gContactNumber").val()) || $("#gContactNumber").val().includes(" ") || $("#gContactNumber").val().length !== 11) {
+            $("#gContactNumber").addClass("invalid-input");
+            isContactG = false;
+        } else {
+            $("#gContactNumber").removeClass("invalid-input");
+            isContactG = true;
+        }
+
+        console.log(isInputs);
+        console.log(isContactS);
+        console.log(isContactG);
+
+        if (isContactG && isContactS && isInputs) {
+            $(".fourth-container").addClass("exit");
+            setTimeout(function () {
+                $(".fourth-container").addClass("d-none");
+            }, 500);
+        }
+
+    });
 });
