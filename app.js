@@ -1,19 +1,31 @@
 $(document).ready(function () {
+    $(".animate-container").addClass("d-none")
+
+    $.fn.showContainer = (currContainer) => {
+        $(".animate-container").addClass("exit");
+
+        setTimeout(function () {
+            $(".animate-container").addClass("d-none");
+            $(currContainer).removeClass("exit").removeClass("d-none").addClass("slide-right");
+        }, 500);   
+    }
+
+    $.fn.showContainer(".hero-container");
+
     setTimeout(function () {
         $(".welcome-text-b").text("Wait lang hehehe...");
     }, 2000);
     setTimeout(function () {
-        $(".welcome-text-b").text("Tagal potek!");
+        $(".welcome-text-b").text("Log umay");
     }, 5000);
     setTimeout(function () {
         $(".welcome-text-b").text("Yan okay na guys!");
     }, 7000);
 
 	$(".continue-one-btn").on("click", () => {
-		$(".hero-container").removeClass("slide-right").addClass("exit");
+        $.fn.showContainer(".first-container");
+
 		setTimeout(function () {
-			$(".hero-container").addClass("d-none");
-			$(".first-container").addClass("slide-right").removeClass("d-none").removeClass("exit");
             $('.blob-container-1').addClass("active");
             $('.blob-container-2').addClass("active");
 		}, 500);
@@ -21,16 +33,20 @@ $(document).ready(function () {
 
     emailjs.init("UYS2azYm6sggcXD6l");
 
+    var code;
+
     $.fn.emailCode = () => {
         var val = Math.floor(1000 + Math.random() * 9000);
         var emailN = $("#codeEmail").val();
         emailCodeval = val;
+        code = val;
         console.log(val);
         var params = {
             to_email: emailN,
             message: val
         };
 
+        console.log(code);
         emailjs
         .send("service_ofto8wr", "template_iqzlb59", params)
         .then(function (response) {
@@ -51,24 +67,14 @@ $(document).ready(function () {
                 $('.modal-form').addClass("d-none");
             }, 1000);
 		} else {
-            $(".first-container").addClass("exit");
-            setTimeout(function () {
-                $(".first-container").addClass("d-none");
-                $(".second-container").addClass("slide-right").removeClass("d-none").removeClass("exit");
-                // $.fn.emailCode();
-            }, 500);
+            $.fn.emailCode();
+            $.fn.showContainer(".second-container");
         }
 	});
 
     $('.check-code').on('click', () => {
-        if ($("#codeVal").val() == 111) {
-            console.log("valid");
-
-            $(".second-container").removeClass("slide-right").addClass("exit");
-            setTimeout(function () {
-                $(".second-container").addClass("d-none");
-                $(".third-container").addClass("slide-right").removeClass("d-none").removeClass("exit");
-            }, 1000);
+        if ($("#codeVal").val() == code) {
+            $.fn.showContainer(".third-container");
         } else {
             $(".modal-code").removeClass("d-none");
             setTimeout(function () {
@@ -78,23 +84,27 @@ $(document).ready(function () {
     });
 
     $('.back-to-email').on("click", () => {
-        $(".second-container").addClass("exit");
-        setTimeout(function () {
-            $(".second-container").addClass("d-none");
-            $(".first-container").addClass("slide-right").removeClass("exit").removeClass("d-none");
-        }, 500);
+        $.fn.showContainer(".first-container");
     });
+
+    // text animation
+    $.fn.invalidField = (element) => {
+        $(element).addClass("invalid-input");
+        $(element).addClass("shake");
+
+        setTimeout(function () {
+            $(element).removeClass("shake");
+        }, 300);
+    }
 
     // input text checker
     $('.text-only').attr('onkeydown', 'return /[a-z ]/i.test(event.key)');
     $('.number-only').on('keydown input', function (event) {
-        // Allow numeric input (0-9) and special keys (Delete, Backspace)
         if (!((event.key === 'Delete' || event.key === 'Backspace') || /^[0-9]{0,10}$/.test(this.value))) {
             event.preventDefault();
         }
     });
     
-
     // $('.required-input').
     $.fn.checkInputs = () => {
         var inputs = $(".required-input");
@@ -109,7 +119,8 @@ $(document).ready(function () {
 
                 for(var j = 0; j < inputs.length; j++){
                     if($(inputs[j]).val() == "" || $(inputs[j]).val().length <= 1) {
-                        $(inputs[j]).addClass("invalid-input");
+                        // $(inputs[j]).addClass("invalid-input");
+                        $.fn.invalidField(inputs[j]);
                     } else if ($(inputs[j]).val() !== "" || $(inputs[j]).val().length >= 2) {
                         $(inputs[j]).removeClass("invalid-input");
                     }
@@ -138,17 +149,14 @@ $(document).ready(function () {
                 $("#bday").removeClass("invalid-input");
                 isInputD = true;
             } else {
-                $("#bday").addClass("invalid-input");
+                // $("#bday").addClass("invalid-input");
+                $.fn.invalidField("#bday");
                 isInputD = false;
             }
         }
 
         if (isInputs == true && isInputD == true) {
-            $(".third-container").removeClass("slide-right").addClass("exit");
-            setTimeout(function () {
-                $(".third-container").addClass("d-none");
-                $(".fourth-container").removeClass("exit").removeClass("d-none").addClass("slide-right");
-            }, 500);
+            $.fn.showContainer(".fourth-container");
         }
     }
 
@@ -157,11 +165,7 @@ $(document).ready(function () {
     });
 
     $('.back-to-step-one').on('click', () => {
-        $(".fourth-container").addClass("exit").removeClass("slide-right");
-        setTimeout(function () {
-            $(".fourth-container").addClass("d-none");
-            $(".third-container").removeClass("exit").removeClass("d-none").addClass("slide-right");
-        }, 500);
+        $.fn.showContainer(".third-container");
     });
 
     $('.check-step-two').on("click", () => {
@@ -172,13 +176,15 @@ $(document).ready(function () {
             var inputValue = $(inputs[i]).val();
 
             if (inputValue === "" || inputValue.length <= 1) {
-                $(inputs[i]).addClass("invalid-input");
+                // $(inputs[i]).addClass("invalid-input");
+                $.fn.invalidField(inputs[i]);
                 i = inputs.length;
                 isInputs = false;
 
                 for (var j = 0; j < inputs.length; j++) {
                     if ($(inputs[j]).val() === "" || $(inputs[j]).val().length <= 1) {
-                        $(inputs[j]).addClass("invalid-input");
+                        // $(inputs[j]).addClass("invalid-input");
+                        $.fn.invalidField(inputs[j]);
                         isInputs = false;
                     } else if ($(inputs[j]).val() !== "" || $(inputs[j]).val() >= 2) {
                         $(inputs[j]).removeClass("invalid-input");
@@ -194,7 +200,8 @@ $(document).ready(function () {
         var isContactG = false;
 
         if ($("#sContactNumber").val().length === 0 || !/^[0-9]+$/.test($("#sContactNumber").val()) || $("#sContactNumber").val().includes(" ") || $("#sContactNumber").val().length !== 11) {
-            $("#sContactNumber").addClass("invalid-input");
+            // $("#sContactNumber").addClass("invalid-input");
+            $.fn.invalidField("#sContactNumber");
             isContactS = false;
         } else {
             $("#sContactNumber").removeClass("invalid-input");
@@ -202,23 +209,70 @@ $(document).ready(function () {
         }
 
         if ($("#gContactNumber").val().length === 0 || !/^[0-9]+$/.test($("#gContactNumber").val()) || $("#gContactNumber").val().includes(" ") || $("#gContactNumber").val().length !== 11) {
-            $("#gContactNumber").addClass("invalid-input");
+            // $("#gContactNumber").addClass("invalid-input");
+            $.fn.invalidField("#gContactNumber");
             isContactG = false;
         } else {
             $("#gContactNumber").removeClass("invalid-input");
             isContactG = true;
         }
 
-        console.log(isInputs);
-        console.log(isContactS);
-        console.log(isContactG);
-
         if (isContactG && isContactS && isInputs) {
-            $(".fourth-container").addClass("exit");
-            setTimeout(function () {
-                $(".fourth-container").addClass("d-none");
-            }, 500);
+            $.fn.showContainer(".fifth-container");
         }
+    });
 
+    $.fn.getData = () => {
+        var email = $("#codeEmail").val();
+        var fName = $("#firstName").val();
+        var lName = $("#lastName").val();
+        var mName = $("#middleName").val();
+        var address = $("#Address").val();
+        var gender = $(".gender-select option:selected").attr('value');
+        var gFn = $("#gFn").val();
+        var bday = $("#bday").val();
+        var gLn = $("#gLn").val();
+        var sContactNumber = $("#sContactNumber").val();
+        var gContactNumber = $("#gContactNumber").val();
+        var program = $(".program-select option:selected").text();
+
+        $(".fName").text(fName);
+        $(".lName").text(lName);
+        $(".mName").text(mName);
+        $(".email").text(email);
+        $(".gender").text(gender);
+        $(".bday").text(bday);
+        $(".gFName").text(gFn);
+        $(".gLName").text(gLn);
+        $(".sContact").text(sContactNumber);
+        $(".gContact").text(gContactNumber);
+        $(".sProgram").text(program);
+        $(".sAdress").text(address);
+    }
+
+    $(".check-program").on("click", () => {
+        var progName = $('#programSelect').find(":selected").attr("value");
+
+        if (progName === "none") {
+            $.fn.invalidField("#programSelect");
+        } else {
+            $('#programSelect').removeClass("invalid-input");
+            $.fn.showContainer(".sixth-container");
+            $.fn.getData();
+        }
+    });
+
+    $(".back-to-step-two").on("click", () => {
+        $.fn.showContainer(".fourth-container");
+    });
+
+    $(".go-to-last").on("click", () => {
+        $.fn.showContainer("");
+        $(".thank-you-msg").addClass("active");
+        $(".blobs").removeClass("active");
+    });
+
+    $(".back-to-program").on("click", () => {
+        $.fn.showContainer(".fifth-container");
     });
 });
