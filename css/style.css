@@ -287,9 +287,6 @@ body {
     transform: translateY(0);
     scale: 0.1;
   }
-  60% {
-    scale: 1;
-  }
   65% {
     scale: 1.5;
   }

@@ -101,7 +101,7 @@ body {
 
 .thank-you-msg {
     display: none;
-    
+
 	&.active {
         display: block;
         -webkit-animation: last-animation 5s cubic-bezier(0.47, 0, 0.745, 0.715) both;
@@ -207,9 +207,6 @@ body {
     51% {
         transform: translateY(0);
         scale: (0.1);
-    }
-    60% {
-        scale: (1);
     }
     65% {
         scale: (1.5);
