@@ -88,8 +88,7 @@
 }
 
 .exit-welcome {
-	-webkit-animation: slide-left-w 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-	animation: slide-left-w 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	animation: slide-left-w 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @-webkit-keyframes slide-left-w {

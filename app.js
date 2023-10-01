@@ -10,17 +10,7 @@ $(document).ready(function () {
         }, 500);   
     }
 
-    $.fn.showContainer(".hero-container");
-
-    setTimeout(function () {
-        $(".welcome-text-b").text("Wait lang hehehe...");
-    }, 2000);
-    setTimeout(function () {
-        $(".welcome-text-b").text("Log umay");
-    }, 5000);
-    setTimeout(function () {
-        $(".welcome-text-b").text("Yan okay na guys!");
-    }, 7000);
+    $.fn.showContainer(".hero-container"); // show default container
 
 	$(".continue-one-btn").on("click", () => {
         $.fn.showContainer(".first-container");
@@ -268,7 +258,7 @@ $(document).ready(function () {
 
     $(".go-to-last").on("click", () => {
         $.fn.showContainer("");
-        $(".thank-you-msg").addClass("active");
+        $(".thank-you-msg").removeClass("d-none").addClass("active");
         $(".blobs").removeClass("active");
     });
 
