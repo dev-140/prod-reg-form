@@ -52,6 +52,7 @@ body {
 .heading {
 	font-weight: 800;
 	font-size: 2rem;
+    font-family: $poppins;
 
 	@media (max-width: 768px) {
 		font-size: 1.3rem;

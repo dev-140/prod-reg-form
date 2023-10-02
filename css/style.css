@@ -134,6 +134,7 @@ body {
 .heading {
   font-weight: 800;
   font-size: 2rem;
+  font-family: "Poppins", sans-serif;
 }
 @media (max-width: 768px) {
   .heading {
