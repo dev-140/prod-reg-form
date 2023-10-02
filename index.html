@@ -132,60 +132,69 @@
                     <h2 class="heading bb">
                         3. <span class="outline-text">Personal Information</span>
                     </h2>
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="d-flex flex-column flex-md-row align-items-between">
-                                <div class="col-12 col-md-6 p-2">
-                                        <input
-                                        type="text"
-                                        class="form-control text-only required-input"
-                                        id="firstName"
-                                        placeholder="First Name"
-                                        />
+
+                    <div class="form-group">
+                        <div class="container">
+                            <div class="row row-cols-1">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                                <input
+                                                type="text"
+                                                class="form-control text-only required-input"
+                                                id="firstName"
+                                                placeholder="First Name"
+                                                />
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <input
+                                            type="text"
+                                            class="form-control text-only required-input"
+                                            id="lastName"
+                                            placeholder="Last Name"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-12 col-md-6 p-2">
-                                    <input
-                                    type="text"
-                                    class="form-control text-only required-input"
-                                    id="lastName"
-                                    placeholder="Last Name"
-                                    />
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                                <input
+                                                type="text"
+                                                class="form-control text-only"
+                                                id="middleName"
+                                                placeholder="Middle Name"
+                                                />
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <input placeholder="Birthday" class="form-control required-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="bday" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                                <input
+                                                type="text"
+                                                class="form-control required-input"
+                                                id="Address"
+                                                placeholder="Address"
+                                                />
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <select class="form-select gender-select" aria-label="gender select">
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="d-flex flex-column flex-md-row align-items-between">
-                                <div class="col-12 col-md-6 p-2">
-                                        <input
-                                        type="text"
-                                        class="form-control text-only"
-                                        id="middleName"
-                                        placeholder="Middle Name"
-                                        />
-                                </div>
-                                <div class="col-12 col-md-6 p-2">
-                                    <input placeholder="Birthday" class="form-control required-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="bday" />
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column flex-md-row align-items-between">
-                                <div class="col-12 col-md-6 p-2">
-                                        <input
-                                        type="text"
-                                        class="form-control required-input"
-                                        id="Address"
-                                        placeholder="Address"
-                                        />
-                                </div>
-                                <div class="col-12 col-md-6 p-2">
-                                    <select class="form-select gender-select" aria-label="gender select">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <button type="submit" class="buttons btn btn-dark check-step-one mt-3 col-12">
+                                Continue
+                            </button>
                         </div>
-                        <button type="submit" class="buttons btn btn-dark check-step-one mt-3">
-                            Continue
-                        </button>
                     </div>
                 </div>
 
@@ -194,52 +203,58 @@
                     <h2 class="heading bb">
                         4. <span class="outline-text">Other Information</span>
                     </h2>
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="d-flex flex-column flex-md-row align-items-between">
-                                <div class="col-12 col-md-6 p-2">
-                                    <input
-                                    type="text"
-                                    class="form-control text-only required-input-2"
-                                    id="gFn"
-                                    placeholder="Guardian First Name"
-                                    />
-                                </div>
-                                <div class="col-12 col-md-6 p-2">
-                                    <input
-                                    type="text"
-                                    class="form-control text-only required-input-2"
-                                    id="gLn"
-                                    placeholder="Guardian Last Name"
-                                    />
+                    <div class="form-group">
+                        <div class="container">
+                            <div class="row row-cols-1">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <input
+                                            type="text"
+                                            class="form-control text-only required-input-2"
+                                            id="gFn"
+                                            placeholder="Guardian First Name"
+                                            />
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <input
+                                            type="text"
+                                            class="form-control text-only required-input-2"
+                                            id="gLn"
+                                            placeholder="Guardian Last Name"
+                                            />
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                                <input
+                                                type="text"
+                                                class="form-control required-input-contact number-only"
+                                                id="sContactNumber"
+                                                placeholder="Student Contact Number"
+                                                />
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <input
+                                            type="text"
+                                            class="form-control required-input-contact number-only"
+                                            id="gContactNumber"
+                                            placeholder="Guardian Contact Number"
+                                            />
+                                        </div> 
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="d-flex flex-column flex-md-row align-items-between">
-                                <div class="col-12 col-md-6 p-2">
-                                        <input
-                                        type="text"
-                                        class="form-control required-input-contact number-only"
-                                        id="sContactNumber"
-                                        placeholder="Student Contact Number"
-                                        />
-                                </div>
-                                <div class="col-12 col-md-6 p-2">
-                                    <input
-                                    type="text"
-                                    class="form-control required-input-contact number-only"
-                                    id="gContactNumber"
-                                    placeholder="Guardian Contact Number"
-                                    />
-                            </div>
+                            <div class="row">
+                                <button type="submit" class="buttons btn btn-dark mt-3 check-step-two">
+                                    Continue
+                                </button>
+                                <button type="submit" class="buttons back-to-step-one btn btn-secondary mt-3">
+                                    Back
+                                </button>
                             </div>
                         </div>
-                        <button type="submit" class="buttons btn btn-dark mt-3 check-step-two">
-                            Continue
-                        </button>
-                        <button type="submit" class="buttons back-to-step-one btn btn-dark mt-3">
-                            Back
-                        </button>
                     </div>
                 </div>
 

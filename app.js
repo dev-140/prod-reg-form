@@ -89,6 +89,11 @@ $(document).ready(function () {
 
     // input text checker
     $('.text-only').attr('onkeydown', 'return /[a-z ]/i.test(event.key)');
+    $('.text-only').on('input', function() {
+        var inputValue = $(this).val();
+        var lettersOnly = inputValue.replace(/[^a-zA-Z]/g, ''); // Remove non-letter characters
+        $(this).val(lettersOnly); // Set the input value to letters-only
+    });
     $('.number-only').on('keydown input', function (event) {
         if (!((event.key === 'Delete' || event.key === 'Backspace') || /^[0-9]{0,10}$/.test(this.value))) {
             event.preventDefault();
