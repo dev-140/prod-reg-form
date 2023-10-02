@@ -10,7 +10,7 @@ $(document).ready(function () {
         }, 500);   
     }
 
-    $.fn.showContainer(".hero-container"); // show default container
+    $.fn.showContainer(".third-container"); // show default container
 
 	$(".continue-one-btn").on("click", () => {
         $.fn.showContainer(".first-container");
@@ -94,6 +94,7 @@ $(document).ready(function () {
         var lettersOnly = inputValue.replace(/[^a-zA-Z]/g, ''); // Remove non-letter characters
         $(this).val(lettersOnly); // Set the input value to letters-only
     });
+
     $('.number-only').on('keydown input', function (event) {
         if (!((event.key === 'Delete' || event.key === 'Backspace') || /^[0-9]{0,10}$/.test(this.value))) {
             event.preventDefault();
@@ -127,6 +128,7 @@ $(document).ready(function () {
         }
 
         var inputDate = $("#bday").val();
+
         if (inputDate) {
             var birthDate = new Date(inputDate);
             var currentDate = new Date();
@@ -140,7 +142,7 @@ $(document).ready(function () {
                 age--;
             }
             
-            if (age >= 16) {
+            if (age >= 16 && age <= 101) {
                 $("#bday").removeClass("invalid-input");
                 isInputD = true;
             } else {
