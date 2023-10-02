@@ -10,7 +10,7 @@ $(document).ready(function () {
         }, 500);   
     }
 
-    $.fn.showContainer(".third-container"); // show default container
+    $.fn.showContainer(".hero-container"); // show default container
 
 	$(".continue-one-btn").on("click", () => {
         $.fn.showContainer(".first-container");
